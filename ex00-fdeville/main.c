@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 23:30:14 by fdeville          #+#    #+#             */
-/*   Updated: 2025/08/16 21:51:34 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/08/16 23:21:23 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -71,32 +71,6 @@ int	validate_grid_str(char *str)
 			return (0);
 	return (1);
 }
-/* char	**split_str(char *str, char **arr)
-{
-	int	i;
-	int	j;
-	int	k;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == ' ')
-		{
-			arr[j][k] = '\0';
-			k = 0;
-			j++;
-		}
-		else {
-			arr[j][k] = str[i];
-			k++;
-		}
-		i++;
-	}
-
-	return (arr);
-}*/
 
 char	**split_str(char *str, char **arr)
 {
@@ -108,6 +82,7 @@ char	**split_str(char *str, char **arr)
 	int	i;
 	int	j;
 	int	last_was_space;
+	char	c;	
 
 	str_count = 0;
 	i = 0;
@@ -121,14 +96,20 @@ char	**split_str(char *str, char **arr)
 			str_count++ && last_was_space = 0;
 		i++;
 	}
-	while () 
+	i = 0;
+	arr = malloc(str_count * sizeof(char*));
+	while (str[i] != '\0')
+		if (str[i] == ' ')
+			j = 0;
+		else
+			
 }
 
 t_grid	create_grid_from_str(char *str, t_grid g)
 {
 	int		g_size;
-	char	**args;
 	int		args_c;
+	char		**args;
 
 	if (!validate_grid_str(str))
 		return (0);
