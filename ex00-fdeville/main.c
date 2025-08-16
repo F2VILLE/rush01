@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 23:30:14 by fdeville          #+#    #+#             */
-/*   Updated: 2025/08/16 00:19:45 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/08/16 21:51:34 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -71,9 +71,8 @@ int	validate_grid_str(char *str)
 			return (0);
 	return (1);
 }
-char	**split_str(char *str)
+/* char	**split_str(char *str, char **arr)
 {
-	char	**arr;
 	int	i;
 	int	j;
 	int	k;
@@ -97,13 +96,43 @@ char	**split_str(char *str)
 	}
 
 	return (arr);
+}*/
+
+char	**split_str(char *str, char **arr)
+{
+	// count how much different strings we will split
+	// malloc the arr
+	// malloc each string then assign it
+	
+	int	str_count;
+	int	i;
+	int	j;
+	int	last_was_space;
+
+	str_count = 0;
+	i = 0;
+	j = 0;
+	last_was_space = 1;
+	while (str[i] != '\0')
+	{
+		if (str[i] == ' ')
+			last_was_space = 1;
+		else if (last_was_space == 1)
+			str_count++ && last_was_space = 0;
+		i++;
+	}
+	while () 
 }
 
 t_grid	create_grid_from_str(char *str, t_grid g)
 {
+	int		g_size;
+	char	**args;
+	int		args_c;
+
 	if (!validate_grid_str(str))
 		return (0);
-
+	args_c = split_str(str, args)
 	g->matrix = malloc()
 }
 
