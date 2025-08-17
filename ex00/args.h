@@ -6,7 +6,12 @@
 /*   By: fdeville <fdeville@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 00:09:21 by fdeville          #+#    #+#             */
-/*   Updated: 2025/08/17 00:09:22 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/08/17 02:27:48 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#ifndef ARGS_H
+# define ARGS_H
+
 int	validate_args(char *str);
+
+#endif
