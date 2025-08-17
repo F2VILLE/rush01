@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 00:00:44 by fdeville          #+#    #+#             */
-/*   Updated: 2025/08/17 19:41:51 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/08/17 20:05:47 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "grid.h"
@@ -99,10 +99,38 @@ int	validate_line(int *line, int size)
 	return (1);
 }
 
+int	cast_clue(int *line, int size, int go_left)
+{
+	int	visibles;
+	int	i;
+
+	visibles = 0;
+	i = 0;
+	if (!go_left)
+	{
+		while (i < size - 1)
+		{
+			if (line[i] < line[i + 1])
+				visibles++;
+		}
+	}
+	else {
+		i = size - 1;
+		while (i > 0)
+		{
+			if (line[i] < line[i - 1])
+				visibles++;
+		}
+	}
+	return (visibles);
+}
+
 int	validate_pov(int *line, int size, int lclue, int rclue)
 {
-	// check the pov for left clue
-	// check the pov for right clue
+	if (cast_clue(line, size, 0) != lclue)
+		return (0);
+	if (cast_clue(line, size, 1) != rclue)
+		return (0);
 	return (1);
 }
 
@@ -117,7 +145,6 @@ int	validate_grid(t_grid grid)
 	y = 0;
 	x = 0;
 	z = 0;
-	// validate each row and col has unique val
 	while (y < grid.size)
 	{
 		x = 0;
@@ -143,7 +170,5 @@ int	validate_grid(t_grid grid)
 			return (0);
 		y++;
 	}
-	
-	// validate pov from clues
 	return (1);
 }
