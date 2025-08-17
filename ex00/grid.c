@@ -6,12 +6,13 @@
 /*   By: fdeville <fdeville@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 00:00:44 by fdeville          #+#    #+#             */
-/*   Updated: 2025/08/17 02:21:32 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/08/17 16:46:36 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "grid.h"
 #include "ft_lib.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 t_grid	create_grid(int *clues, t_grid *grid, int size)
 {
@@ -66,28 +67,20 @@ void display_grid(t_grid grid)
 {
 	int	y;
 	int	x;
-	int	ci;
 
-	ci = 0;
 	y = 0;
 	x = 0;
-	while (ci < grid.size)
-		ft_putchar(grid.clues[ci++]);
-	ci += grid.size;
 	while (y < grid.size)
 	{
 		x = 0;
 		while (x < grid.size)
 		{
-			ft_putchar(grid.clues[ci]);
-			ft_putchar(grid.matrix[y][x]);
-			ft_putchar(grid.clues[ci + grid.size]);
-			ci++;
+			ft_putchar('0' + grid.matrix[y][x]);
+			if (x < grid.size - 1)
+				ft_putchar(' ');
 			x++;
 		}
+		ft_putchar('\n');
 		y++;
 	}
-	ci = 0;
-	while (ci < grid.size)
-		ft_putchar(grid.clues[(ci++) + grid.size]);
 }

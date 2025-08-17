@@ -6,12 +6,13 @@
 /*   By: fdeville <fdeville@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 00:06:25 by fdeville          #+#    #+#             */
-/*   Updated: 2025/08/17 02:20:21 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/08/17 15:46:11 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "args.h"
 #include "grid.h"
 #include "ft_lib.h"
+#include <stdio.h>
 
 int	main(int argc, char *argv[])
 {
@@ -26,7 +27,7 @@ int	main(int argc, char *argv[])
 	}
 	clues_count = 0;
 	clues = clues_from_str(argv[1], &clues_count);
-	create_grid(clues, &grid, clues_count);
+	create_grid(clues, &grid, clues_count / 4);
 	display_grid(grid);
 	return (0);
 }
