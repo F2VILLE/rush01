@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 00:00:44 by fdeville          #+#    #+#             */
-/*   Updated: 2025/08/17 19:15:22 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/08/17 19:41:51 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "grid.h"
@@ -99,14 +99,24 @@ int	validate_line(int *line, int size)
 	return (1);
 }
 
+int	validate_pov(int *line, int size, int lclue, int rclue)
+{
+	// check the pov for left clue
+	// check the pov for right clue
+	return (1);
+}
+
 int	validate_grid(t_grid grid)
 {
 	int	y;
 	int	x;
+	int	z;
 	int	row[grid.size];
+	int	col[grid.size];
 
 	y = 0;
 	x = 0;
+	z = 0;
 	// validate each row and col has unique val
 	while (y < grid.size)
 	{
@@ -114,11 +124,26 @@ int	validate_grid(t_grid grid)
 		while (x < grid.size)
 		{
 			int[y][x] == grid.matrix[y][x];
+			if (y == 0)
+			{
+				z = 0;
+				while (z < grid.size)
+				{
+					col[z] = grid[z][x];
+				}
+				if (!validate_line(col, grid.size))
+					return (0);
+				if (!validate_pov(col, grid.size, grid.clues[x], grid.clues[x + grid.size]))
+					return (0);
+			}
 		}
 		if (!validate_line(row, grid.size))
 			return (0);
+		if (!validate_pov(row, grid.size, grid.clues[2 * grid.size + y], grid.clues[3 * grid.size + y]))
+			return (0);
 		y++;
 	}
+	
 	// validate pov from clues
 	return (1);
 }
