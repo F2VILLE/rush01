@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 00:00:44 by fdeville          #+#    #+#             */
-/*   Updated: 2025/08/17 18:43:17 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/08/17 19:11:59 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "grid.h"
@@ -87,7 +87,16 @@ void display_grid(t_grid grid)
 
 int	validate_line(int *line, int size)
 {
-	
+	int	*sorted;
+	int	i;
+
+	sorted = ft_sort(line, size);
+	while (i < size)
+	{
+		if (sorted[i] != i + 1)
+			return (0);
+	}
+	return (1);
 }
 
 int	validate_grid(t_grid grid)
