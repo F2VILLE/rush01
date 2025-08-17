@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 00:00:44 by fdeville          #+#    #+#             */
-/*   Updated: 2025/08/17 16:46:36 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/08/17 18:43:17 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "grid.h"
@@ -83,4 +83,33 @@ void display_grid(t_grid grid)
 		ft_putchar('\n');
 		y++;
 	}
+}
+
+int	validate_line(int *line, int size)
+{
+	
+}
+
+int	validate_grid(t_grid grid)
+{
+	int	y;
+	int	x;
+	int	row[grid.size];
+
+	y = 0;
+	x = 0;
+	// validate each row and col has unique val
+	while (y < grid.size)
+	{
+		x = 0;
+		while (x < grid.size)
+		{
+			int[y][x] == grid.matrix[y][x];
+		}
+		if (!validate_line(row, grid.size))
+			return (0);
+		y++;
+	}
+	// validate pov from clues
+	return (1);
 }
